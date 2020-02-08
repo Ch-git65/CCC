@@ -1,0 +1,11 @@
+﻿生成启动时间为 2020/2/8 18:01:08。
+     1>项目“E:\fil.c\time2.8\time2.8\time2.8.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         E:\vs\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Release\\" /Fd"Release\vc140.pdb" /Gd /TC /analyze- /errorReport:prompt test.c
+         test.c
+     1>test.c(21): error C2198: “putchar”: 用于调用的参数太少
+     1>已完成生成项目“E:\fil.c\time2.8\time2.8\time2.8.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:00.20
