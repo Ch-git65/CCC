@@ -1,0 +1,4 @@
+﻿  test.c
+E:\fil.c\dird\test.c(32,7): warning C4013: “gets”未定义；假设外部返回 int
+E:\fil.c\dird\test.c(46,52): warning C4047: “=”:“FILE *”与“int”的间接级别不同
+  dird.vcxproj -> E:\fil.c\dird\Debug\dird.exe
