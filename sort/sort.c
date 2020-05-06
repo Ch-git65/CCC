@@ -113,3 +113,154 @@ void selectSort2(int* array, int n)
 		--end;
 	}
 }
+
+//冒泡排序
+//时间复杂度：最坏 O(n^2) 平均O(n^2) 最好O(n)
+//空间复杂度：O(1)
+//稳定性：稳定
+//数据敏感：敏感
+
+void bubbleSort(int* array, int n)
+{
+	while (n)
+	{
+		//对于已经有序的序列，通过标签提前结束排序过程
+		//flag: 1--> 一轮冒泡排序过程中没有发生元素交换
+		int flag = 1;
+		int end = n;
+		//一轮冒泡排序
+		for (int i = 1; i < end; ++i)
+		{
+			//相邻元素进行比较，大的向后移动
+			if (array[i - 1] > array[i])
+			{
+				Swap(array, i, i - 1);
+				flag = 0;
+			}
+		}
+		if (flag)
+			break;
+		--n;
+	}
+}
+
+
+//时间复杂度：O(nlogn)
+//空间复杂度：O(1)
+//稳定性：不稳定 -->调整过程中相对位置可能会发生变化
+//数据敏感：不敏感
+
+//大堆的调整
+void shiftDown(int* array, int n, int parent)
+{
+	int child = 2 * parent + 1;
+	while (child < n)
+	{
+		if (child + 1 < n && array[child + 1] > array[child])
+			++child;
+		if (array[child] > array[parent])
+		{
+			Swap(array, child, parent);
+			parent = child;
+			child = 2 * parent + 1;
+		}
+		else
+			break;
+	}
+}
+
+void heapSort(int* array, int n)
+{
+	//建堆
+	for (int i = (n - 2) / 2; i >= 0; --i)
+	{
+		shiftDown(array, n, i);
+	}
+	//循环删除
+	while (n)
+	{
+		Swap(array, 0, n - 1);
+		--n;
+		shiftDown(array, n, 0);
+	}
+}
+
+//hora划分
+int partion(int* array, int begin, int end)
+{
+	//选择基准值
+	int key = array[begin];
+	int start = begin;
+	//划分
+	while (begin < end)
+	{
+		//从后往前找到第一个小于key的位置
+		while (begin < end && array[begin] >= key)
+		{
+			--end;
+		}
+		while (begin < end && array[begin] <= key)
+		{
+			++begin;
+		}
+		Swap(array, begin, end);
+	}
+	//key和相遇位置的数据交换
+	Swap(array, start, begin);
+	return begin;
+}
+
+//第二种划分方式:挖坑法
+int partion2(int* array, int begin, int end)
+{
+	int key = array[begin];
+	while (begin < end)
+	{
+		//从后向前找
+		while (begin < end && array[end] >= key)
+		{
+			--end;
+		}
+		//填坑:begin
+		array[begin] = array[end];
+		//从前向后找
+		while (begin < end && array[begin] <= key)
+		{
+			++begin;
+		}
+		array[end] = array[begin];
+	}
+	//最后一个坑：相遇的位置-->填充基准值
+	array[begin] = key;
+	return begin;
+}
+
+//前后指针法
+int partion3(int* array, int begin, int end)
+{
+	//prev:最后一个基准值的位置
+	int prev = begin;
+	//cur:新发现的下一个小于基准值的位置
+	int cur = prev + 1;
+	int key = array[begin];
+	while (cur <= end)
+	{
+		//新发现的小数据和尾指针指向的位置不连续，则中间含有大于基准值的数据，故进行交换
+		if (array[cur] < key && ++prev != cur)
+			Swap(array, prev, cur);
+		++cur;
+	}
+	Swap(array, begin, prev);
+	return prev;
+}
+
+void quickSort(int* array, int begin, int end)
+{
+	if (begin >= end)
+		return;
+	//int keyPos = partion(array, begin, end);
+	//int keyPos = partion2(array, begin, end);
+	int keyPos = partion3(array, begin, end);
+	quickSort(array, begin, keyPos - 1);
+	quickSort(array, keyPos + 1, end);
+}
