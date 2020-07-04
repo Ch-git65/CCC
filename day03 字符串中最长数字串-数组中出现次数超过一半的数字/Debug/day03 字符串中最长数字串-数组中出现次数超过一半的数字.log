@@ -1,0 +1,5 @@
+﻿  test.cpp
+E:\fil.c\day03 字符串中最长数字串-数组中出现次数超过一半的数字\test.cpp(48,21): warning C4018: “<”: 有符号/无符号不匹配
+E:\fil.c\day03 字符串中最长数字串-数组中出现次数超过一半的数字\test.cpp(54,17): warning C4018: “>”: 有符号/无符号不匹配
+MSVCRTD.lib(exe_main.obj) : error LNK2019: 无法解析的外部符号 _main，该符号在函数 "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ) 中被引用
+E:\fil.c\day03 字符串中最长数字串-数组中出现次数超过一半的数字\Debug\day03 字符串中最长数字串-数组中出现次数超过一半的数字.exe : fatal error LNK1120: 1 个无法解析的外部命令
