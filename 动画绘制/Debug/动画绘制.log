@@ -1,0 +1,2 @@
+﻿  test.cpp
+E:\fil.c\动画绘制\test.cpp(77): error C4700: 使用了未初始化的局部变量“q”
